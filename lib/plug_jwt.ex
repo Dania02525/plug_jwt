@@ -53,7 +53,7 @@ defmodule PlugJwt do
 
   defp validate_claim(payload, claim_key, claim_value) do
     cond do
-      Dict.get(payload, claim_key, nil) == claim_value ->
+      Dict.get(payload, Atom.to_string(claim_key), nil) == claim_value ->
         :ok
       true ->
         :error
